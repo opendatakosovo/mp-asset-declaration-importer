@@ -1,6 +1,6 @@
 import os
 import argparse
-from dwi import import_data
+from mpadi import import_data
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--csvDirectoryPath', type=str, help='The CSV directory path.')

@@ -4,7 +4,7 @@ from pymongo import MongoClient
 from slugify import slugify
 
 mongo = MongoClient()
-mongo_collection = mongo.kosovoassembly.wealthdeclarations
+mongo_collection = mongo.kosovoassembly.mpassetdeclarations
 
 # Clear collection before running importer
 mongo_collection.remove({})
@@ -26,10 +26,10 @@ def import_data(csv_filepath, year):
 		# Iterate through the rows, retrieve desired values.
 		for row in reader:
 
-			deputy_name = row[0]
-			if deputy_name != "":
+			mp_name = row[0]
+			if mp_name != "":
 
-				deputy_name_slug = slugify(deputy_name)
+				mp_name_slug = slugify(mp_name)
 
 				party_acronym = row[1]
 				party_name = row[1]
@@ -88,9 +88,9 @@ def import_data(csv_filepath, year):
 						"acronym": party_acronym,
 						"slug": party_slug
 					},
-					"deputy":{
-						"name": deputy_name,
-						"slug": deputy_name_slug
+					"mp":{
+						"name": mp_name,
+						"slug": mp_name_slug
 					},
 					"realEstate":{
 						"individual": real_estate_individual,
@@ -133,7 +133,7 @@ def import_data(csv_filepath, year):
 					}
 				}
 
-				print "%s (%s)" % (deputy_name, party_acronym)
+				print "%s (%s)" % (mp_name, party_acronym)
 				mongo_collection.insert(deputy_wealth_declaration)
 				document_counter = document_counter + 1
 			# End of if check. Check if read line is a declaration of wealth.
