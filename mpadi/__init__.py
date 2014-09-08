@@ -63,7 +63,7 @@ def import_data(csv_filepath, year):
 									movable_individual + \
 									shares_individual + \
 									bonds_individual + \
-									cash_individual + \
+									cash_individual - \
 									debts_or_outstanding_individual + \
 									annual_salary_regular_individual + \
 									annual_salary_honorariums_individual 
@@ -72,7 +72,7 @@ def import_data(csv_filepath, year):
 								movable_joint + \
 								shares_joint + \
 								bonds_joint + \
-								cash_joint + \
+								cash_joint - \
 								debts_or_outstanding_joint + \
 								annual_salary_regular_joint + \
 								annual_salary_honorariums_joint 
