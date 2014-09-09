@@ -132,6 +132,11 @@ def import_data(csv_filepath, year):
 							"individual": annual_salary_honorariums_individual,
 							"joint": annual_salary_honorariums_joint,
 							"total": annual_salary_honorariums_individual + annual_salary_honorariums_joint
+						},
+						'totals':{
+							'individual': annual_salary_regular_individual + annual_salary_honorariums_individual,
+							'joint': annual_salary_regular_joint + annual_salary_honorariums_joint,
+							'total': annual_salary_regular_individual + annual_salary_honorariums_individual + annual_salary_regular_joint + annual_salary_honorariums_joint
 						}
 					},
 					"totals":{
