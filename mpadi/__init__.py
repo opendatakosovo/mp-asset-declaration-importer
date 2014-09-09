@@ -94,36 +94,44 @@ def import_data(csv_filepath, year):
 					},
 					"realEstate":{
 						"individual": real_estate_individual,
-						"joint": real_estate_joint
+						"joint": real_estate_joint,
+						"total": real_estate_individual + real_estate_joint
 					},
 					"movable":{
 						"individual": movable_individual,
-						"joint": movable_joint
+						"joint": movable_joint,
+						"total": movable_individual + movable_joint
 					},
 					"shares":{
 						"individual": shares_individual,
-						"joint": shares_joint
+						"joint": shares_joint,
+						"total": shares_individual + shares_joint
 					},
 					"bonds":{
 						"individual": bonds_individual,
-						"joint": bonds_joint
+						"joint": bonds_joint,
+						"total": bonds_individual + bonds_joint
 					},
 					"cash":{
 						"individual": cash_individual,
-						"joint": cash_joint
+						"joint": cash_joint,
+						"total": cash_individual + cash_joint
 					},
 					"debtsOrOutstanding":{
 						"individual": debts_or_outstanding_individual,
-						"joint": debts_or_outstanding_joint
+						"joint": debts_or_outstanding_joint,
+						"total": debts_or_outstanding_individual + debts_or_outstanding_joint
 					},
 					"annualSalary":{
 						"regular":{
 							"individual": annual_salary_regular_individual,
-							"joint": annual_salary_regular_joint
+							"joint": annual_salary_regular_joint,
+							"total": annual_salary_regular_individual + annual_salary_regular_joint
 						},
 						"honorariums":{
 							"individual": annual_salary_honorariums_individual,
-							"joint": annual_salary_honorariums_joint
+							"joint": annual_salary_honorariums_joint,
+							"total": annual_salary_honorariums_individual + annual_salary_honorariums_joint
 						}
 					},
 					"totals":{
