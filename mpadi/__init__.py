@@ -96,6 +96,11 @@ def import_data(csv_filepath, year):
                     party_mp_assets['realEstate']['joint'] \
                     .append(real_estate_joint)
 
+                real_estate_total = real_estate_individual + real_estate_joint
+                (real_estate_total > 0) and \
+                    party_mp_assets['realEstate']['total'] \
+                    .append(real_estate_total)
+
                 # TODO: NEED TO INCLUDE TOTALS IN party_mp_assets
 
                 # MOVABLE ASSETS
@@ -109,6 +114,11 @@ def import_data(csv_filepath, year):
                     party_mp_assets['movable']['joint'] \
                     .append(movable_joint)
 
+                movable_total = movable_individual + movable_joint
+                (movable_total > 0) and \
+                    party_mp_assets['movable']['total'] \
+                    .append(movable_total)
+
                 # SHARES ASSETS
                 shares_individual = float(row[6]) if row[6] else 0
                 (shares_individual > 0) and \
@@ -119,6 +129,11 @@ def import_data(csv_filepath, year):
                 (shares_joint > 0) and \
                     party_mp_assets['shares']['joint'] \
                     .append(shares_joint)
+
+                shares_total = shares_individual + shares_joint
+                (shares_total > 0) and \
+                    party_mp_assets['shares']['total'] \
+                    .append(shares_total)
 
                 # BONDS ASSETS
                 bonds_individual = float(row[8]) if row[8] else 0
@@ -131,6 +146,12 @@ def import_data(csv_filepath, year):
                     party_mp_assets['bonds']['joint'] \
                     .append(bonds_joint)
 
+                bonds_total = bonds_individual + bonds_joint
+                (bonds_total > 0) and \
+                    party_mp_assets['bonds']['total'] \
+                    .append(bonds_total)
+
+
                 # CASH ASSETS
                 cash_individual = float(row[10]) if row[10] else 0
                 (cash_individual > 0) and \
@@ -141,6 +162,11 @@ def import_data(csv_filepath, year):
                 (cash_joint > 0) and \
                     party_mp_assets['cash']['joint'] \
                     .append(cash_joint)
+
+                cash_total = cash_individual + cash_joint
+                (cash_total > 0) and \
+                    party_mp_assets['cash']['total'] \
+                    .append(cash_total)
 
                 # DEBTS OR OUTSTANDING ASSETS
                 debts_or_outstanding_individual = float(row[12]) if row[12] else 0
@@ -153,6 +179,11 @@ def import_data(csv_filepath, year):
                     party_mp_assets['debtsOrOutstanding']['joint'] \
                     .append(debts_or_outstanding_joint)
 
+                debts_or_outstanding_total = debts_or_outstanding_individual + debts_or_outstanding_joint
+                (debts_or_outstanding_total > 0) and \
+                    party_mp_assets['debtsOrOutstanding']['total'] \
+                    .append(debts_or_outstanding_total)
+
                 # ANNUAL SALARY ASSETS
                 annual_salary_regular_individual = float(row[14]) if row[14] else 0
                 (annual_salary_regular_individual > 0) and \
@@ -164,6 +195,11 @@ def import_data(csv_filepath, year):
                     party_mp_assets['annualSalary']['regular']['joint'] \
                     .append(annual_salary_regular_joint)
 
+                annual_salary_regular_total = annual_salary_regular_individual + annual_salary_regular_joint
+                (annual_salary_regular_total > 0) and \
+                    party_mp_assets['annualSalary']['regular']['total'] \
+                    .append(annual_salary_regular_total)
+
                 # ANNUAL SALARY HONORARIUMS
                 annual_salary_honorariums_individual = float(row[16]) if row[16] else 0
                 (annual_salary_honorariums_individual > 0) and \
@@ -174,6 +210,27 @@ def import_data(csv_filepath, year):
                 (annual_salary_honorariums_joint > 0) and \
                     party_mp_assets['annualSalary']['honorariums']['joint'] \
                     .append(annual_salary_honorariums_joint)
+
+                annual_salary_honorariums_total = annual_salary_honorariums_individual + annual_salary_honorariums_joint
+                (annual_salary_honorariums_total > 0) and \
+                    party_mp_assets['annualSalary']['honorariums']['total'] \
+                    .append(annual_salary_honorariums_total)
+
+                # ANNUAL SALARY TOTAL
+                annual_salary_individual_total = annual_salary_regular_individual + annual_salary_honorariums_individual
+                (annual_salary_individual_total > 0) and \
+                    party_mp_assets['annualSalary']['totals']['individual'] \
+                    .append(annual_salary_individual_total)
+
+                annual_salary_joint_total = annual_salary_regular_joint + annual_salary_honorariums_joint
+                (annual_salary_joint_total > 0) and \
+                    party_mp_assets['annualSalary']['totals']['joint'] \
+                    .append(annual_salary_joint_total)
+
+                annual_salary_total = annual_salary_individual_total + annual_salary_joint_total
+                (annual_salary_total > 0) and \
+                    party_mp_assets['annualSalary']['totals']['total'] \
+                    .append(annual_salary_total)
 
                 # TOTAL INDIVIDUAL ASSETS
                 total_individual =  \
@@ -227,48 +284,48 @@ def import_data(csv_filepath, year):
                     "realEstate": {
                         "individual": real_estate_individual,
                         "joint": real_estate_joint,
-                        "total": real_estate_individual + real_estate_joint
+                        "total": real_estate_total
                     },
                     "movable": {
                         "individual": movable_individual,
                         "joint": movable_joint,
-                        "total": movable_individual + movable_joint
+                        "total": movable_total
                     },
                     "shares": {
                         "individual": shares_individual,
                         "joint": shares_joint,
-                        "total": shares_individual + shares_joint
+                        "total": shares_total
                     },
                     "bonds": {
                         "individual": bonds_individual,
                         "joint": bonds_joint,
-                        "total": bonds_individual + bonds_joint
+                        "total": bonds_total
                     },
                     "cash": {
                         "individual": cash_individual,
                         "joint": cash_joint,
-                        "total": cash_individual + cash_joint
+                        "total": cash_total
                     },
                     "debtsOrOutstanding": {
                         "individual": debts_or_outstanding_individual,
                         "joint": debts_or_outstanding_joint,
-                        "total": debts_or_outstanding_individual + debts_or_outstanding_joint
+                        "total": debts_or_outstanding_total
                     },
                     "annualSalary": {
                         "regular": {
                             "individual": annual_salary_regular_individual,
                             "joint": annual_salary_regular_joint,
-                            "total": annual_salary_regular_individual + annual_salary_regular_joint
+                            "total": annual_salary_regular_total
                         },
                         "honorariums": {
                             "individual": annual_salary_honorariums_individual,
                             "joint": annual_salary_honorariums_joint,
-                            "total": annual_salary_honorariums_individual + annual_salary_honorariums_joint
+                            "total": annual_salary_honorariums_total
                         },
                         'totals': {
-                            'individual': annual_salary_regular_individual + annual_salary_honorariums_individual,
-                            'joint': annual_salary_regular_joint + annual_salary_honorariums_joint,
-                            'total': annual_salary_regular_individual + annual_salary_honorariums_individual + annual_salary_regular_joint + annual_salary_honorariums_joint
+                            'individual': annual_salary_individual_total,
+                            'joint': annual_salary_joint_total,
+                            'total': annual_salary_total
                         }
                     },
                     "totals": {
