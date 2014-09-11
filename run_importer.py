@@ -2,6 +2,8 @@ import os
 import argparse
 from mpadi import import_data
 
+#from mpadi import build_medians_collection
+
 parser = argparse.ArgumentParser()
 parser.add_argument(
     '--csvDirectoryPath',
@@ -23,11 +25,13 @@ if __name__ == '__main__':
                 csv_filepath = csv_directory_path + '/' + filename
                 year = int(filename.replace('.csv', ''))
 
-                print '\n\nImporting from %s\n' % csv_filepath
+                print "\n\nImporting %s asset declarations from '%s':\n" % (year, csv_filepath)
                 doc_count = import_data(csv_filepath, year)
 
-                result_dict[filename] = doc_count
+                result_dict[year] = doc_count
 
-    print "\nResults:"
+    print "\n\nIMPORT SUMMARY:"
     for key in result_dict.keys():
-        print "%s Kosovo Assembly Deputies from '%s'" % (result_dict[key], key)
+        print "%s asset declarations imported from %s Kosovo Assembly MPs." % (result_dict[key], key)
+
+    print  # Just skip line
