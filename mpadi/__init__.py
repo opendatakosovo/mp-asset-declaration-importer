@@ -29,15 +29,15 @@ def import_data(csv_filepath, year):
         # Iterate through the rows, retrieve desired values.
         for row in reader:
 
-            mp_name = row[0]
+            mp_name = row[0].strip()
 
             if mp_name != "":
 
                 mp_name_slug = slugify(mp_name)
 
-                party_acronym = row[1]
+                party_acronym = row[1].strip()
                 party_name = row[1]
-                party_slug = slugify(row[1])
+                party_slug = slugify(party_acronym)
 
                 # REAL ESTATE ASSETS
                 real_estate_individual = float(row[2]) if row[2] else 0
