@@ -35,8 +35,14 @@ def import_data(csv_filepath, year):
 
                 mp_name_slug = slugify(mp_name)
 
+                # In the last mandate AKR were they were represented as KKR
+                # Wherever in the List is KKR acronym, that is AKR,
+                # merge those data together in each specific year.
                 party_acronym = row[1].strip()
-                party_name = row[1]
+                if party_acronym == 'KKR':
+                    party_acronym = 'AKR'
+
+                party_name = party_acronym
                 party_slug = slugify(party_acronym)
 
                 # REAL ESTATE ASSETS
